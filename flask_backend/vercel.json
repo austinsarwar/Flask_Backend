@@ -1,19 +1,17 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "run.py",
-        "use": "@vercel/python"
-      }
-    ],
-
-    "routes": [
-      {
-        "src": "/api/(.*)",
-        "dest": "run.py"
-      }
-    ],
-    "installCommand": "pip install -r requirements.txt",
-    "buildCommand": ""
-  }
-  
+  "version": 2,
+  "builds": [
+    {
+      "src": "run.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "run.py"
+    }
+  ],
+  "installCommand": "pip install -r requirements.txt",
+  "buildCommand": ""
+}
