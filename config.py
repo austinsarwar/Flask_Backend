@@ -10,7 +10,7 @@ class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or secrets.token_hex(16)  
 
     # Database configuration from the Heroku environment variable
-    SQLALCHEMY_DATABASE_URI = os.environ.get('JAWSDB_URL')  # Ensure this key matches Heroku's
+    SQLALCHEMY_DATABASE_URI = os.environ.get('JAWSDB_URL') or os.environ.get('DATABASE_URI')  # Ensure this key matches Heroku's
 
     # Disable SQLAlchemy event system to save resources
     SQLALCHEMY_TRACK_MODIFICATIONS = False
