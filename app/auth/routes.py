@@ -2,12 +2,13 @@ from flask import request, jsonify
 from app import db, bcrypt
 from app.models import User
 from app.auth import auth_bp
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required
 
+# Define the blueprint for authentication
+auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
-   
     data = request.get_json()
     if not data:
         return jsonify({"error": "No input data provided"}), 400
@@ -53,6 +54,7 @@ def login():
         return jsonify({"message": "Logged in successfully"}), 200
     else:
         return jsonify({"error": "Invalid email or password"}), 401
+
 
 @auth_bp.route('/logout', methods=['POST'])
 @login_required
