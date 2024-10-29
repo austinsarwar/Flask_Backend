@@ -1,9 +1,19 @@
 import os
 import secrets
+from dotenv import load_dotenv
+
+# Load environment variables from .env file if running locally
+load_dotenv()
 
 class Config:
     # Use an environment variable for the secret key or generate one if not set
-    SECRET_KEY = os.environ.get('SECRET_KEY') or secrets.token_hex(16)  # Generates a random key
-    # Use an environment variable for the database URI
-    SQLALCHEMY_DATABASE_URI = os.environ.get('JAWS_DB') 
+    SECRET_KEY = os.environ.get('SECRET_KEY') or secrets.token_hex(16)  
+
+    # Database configuration from the Heroku environment variable
+    SQLALCHEMY_DATABASE_URI = os.environ.get('JAWSDB_URL')  # Ensure this key matches Heroku's
+
+    # Disable SQLAlchemy event system to save resources
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+    # OpenAI API Key from environment variables
+    OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
