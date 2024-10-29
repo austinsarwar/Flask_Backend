@@ -1,0 +1,6 @@
+config.py
+venv/
+migrations/
+__pycache__/
+.venv_for_flask_backend/
+.env
