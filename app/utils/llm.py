@@ -27,25 +27,24 @@ def generate_meal_plan_llm(user_data):
 
     
 
-def calculate(nutrient,output):
+def calculate(nutrient, output):
+    '''
+    LLM Output + Given Nutritional info -> % Error 
+    '''
+    sum = 0
 
-        '''
-        LLM Output + Given Nutritional info -> % Error 
-        '''
+    # search for all instances of nutrient 
+    if nutrient == "calories":
+        regex = r"(\d{1,4})( cals)"  # Use a raw string
+    else:
+        regex = rf"(\d{{1,4}})(g {nutrient})"  # Use a formatted raw string
+    
+    amounts = re.findall(regex, output)
 
-        sum = 0
-
-        # search for all instances of nutrient 
-        if nutrient == "calories":
-            regex = "(\d{1,4})( cals)"
-        else:
-            regex = "(\d{1,4})(g "+nutrient+")"
-        amounts = re.findall(regex, output)
-
-        # sum nutrient
-        for amount in amounts:
-            sum += int(amount[0])
-        return sum
+    # sum nutrient
+    for amount in amounts:
+        sum += int(amount[0])
+    return sum
 
 ## FIXME: Suggest tweaks to mealplan based on calories and corresponding macros
 def check(output, calories, fat, carbs, protein):

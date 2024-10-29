@@ -1,0 +1,4 @@
+web: gunicorn flask_backend.run:app
+
+
+heroku config:set SECRET_KEY='af54decc2df833fe0a017ad39203f74c' FLASK_ENV=production --app shape-shift-authentication
