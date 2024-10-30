@@ -25,15 +25,8 @@ def create_app(config_class=Config):
     CORS(
         app,
         supports_credentials=True,
-        resources={
-            r"/*": {
-                "origins": ["http://127.0.0.1:5173"],
-                "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-                "allow_headers": ["Content-Type", "Authorization"]
-            }
-        },
-    )
-
+        resources={r"/*": {"origins": "*"}},
+        )
     # Register blueprints
     from app.auth.routes import auth_bp
     from app.main.routes import main_bp
