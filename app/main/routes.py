@@ -22,7 +22,7 @@ def potato():
     return 'hello potato'
 
 @main_bp.route('/submit-profile-data', methods=['POST'])
-@login_required
+
 def submit_profile_data():
     data = request.get_json()
 
