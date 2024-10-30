@@ -5,6 +5,7 @@ from app import db
 from app.models import UserGoal, UserInfo, UserMealPlanPreference, UserNutrition
 from flask_login import login_required, current_user
 from datetime import datetime
+
 from app.utils.nutrition import (
     nutrition_plan,
     Goal,
