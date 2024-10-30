@@ -3,7 +3,7 @@ from app import db, bcrypt
 from app.models import User
 from app.auth import auth_bp
 from flask_login import login_user, logout_user, login_required, current_user
-
+from flask import Blueprint
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
